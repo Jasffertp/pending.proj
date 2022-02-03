@@ -1,0 +1,214 @@
+<html lang="en">
+<head>
+	<title>header</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+	<link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sidebars/">
+	<link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="style.css" rel="stylesheet">
+	
+</head>
+<body style="background-color: rgba(0, 0, 0, .1);">	
+	<nav class="navbar navbar-dark bg-dark">
+	  <div class="container-fluid">
+		<a class="navbar-toggler" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample" style="margin-right: 16px;">
+			<span class="navbar-toggler-icon"></span>
+		</a>
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="navbar-brand" aria-current="page" href="#">
+			<?php 
+				if(isset($_GET['site'])){
+					echo $_GET['site'];
+					}
+				else{
+					echo 'Dashboard';
+				}
+			?></a>
+          </li>
+        </ul>
+	  </div>
+	  	
+	</nav>
+  
+	<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+	  <div class="offcanvas-header">
+		<h5 class="offcanvas-title" id="offcanvasExampleLabel">KEOMS</h5>
+		<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+	  </div>
+	  <div class="offcanvas-body">
+		<div>
+		  Short for Key Equipment Operational Monitoring System, KEOMS is a responsive website that aims to help the BMO with reporting and storing data
+		</div>
+		<div class="dropdown mt-3">
+		<ul class="list-unstyled ps-0">
+		<?php
+			if($_SESSION['role'] == "admin" || $_SESSION['role'] == "head"){
+		?>
+		
+		
+		  <li class="mb-1">
+			<a class="btn btn-toggle align-items-center rounded" href="#">
+			  Dashboard
+			</a>
+		  </li>
+		  <li class="mb-1">
+			<a class="btn btn-toggle align-items-center rounded" href="#">
+			  Reports
+			</a>
+		  <!--
+			<button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+			  Reports
+			</button>
+			<div class="collapse" id="dashboard-collapse">
+			  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+				<li><a href="#" class="link-dark rounded">Daily</a></li>
+				<li><a href="#" class="link-dark rounded">Weekly</a></li>
+				<li><a href="#" class="link-dark rounded">Monthly</a></li>
+				<li><a href="#" class="link-dark rounded">All Reports</a></li>
+			  </ul>
+			</div>
+			-->
+		  </li>
+		  
+		  <li class="mb-1">
+		  <a class="btn btn-toggle align-items-center rounded" href="#">
+			  Issues
+			</a>
+		  <!--
+			<button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#issues-collapse" aria-expanded="false">
+			  Issues
+			</button>
+			<div class="collapse" id="issues-collapse">
+			  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+				<li><a href="#" class="link-dark rounded">New</a></li>
+				<li><a href="#" class="link-dark rounded">Pending</a></li>
+				<li><a href="#" class="link-dark rounded">Done</a></li>
+				<li><a href="#" class="link-dark rounded">All issue reports</a></li>
+			  </ul>
+			</div>
+			-->
+		  </li>
+		  
+		  <li class="mb-1">
+			<a class="btn btn-toggle align-items-center rounded" href="#">
+			  Equipment inventory
+			</a>
+			<!--
+			<button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+			  Machines/Equipment
+			</button>
+			<div class="collapse" id="orders-collapse">
+			  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+				<li><a href="#" class="link-dark rounded">HVAC</a></li>
+				<li><a href="#" class="link-dark rounded">Gensets</a></li>
+				<li><a href="#" class="link-dark rounded">Plumbing</a></li>
+				<li><a href="#" class="link-dark rounded">Pumps</a></li>
+				<li><a href="#" class="link-dark rounded">All machines</a></li>
+			  </ul>
+			</div>
+			-->
+		  </li>
+		  
+		  <li class="mb-1">
+			<button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+			  Management
+			</button>
+			<div class="collapse" id="orders-collapse">
+			  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+				<li><a href="#" class="link-dark rounded">Assign reports</a></li>
+				<li><a href="#" class="link-dark rounded">Assign issue report</a></li>
+				<li><a href="#" class="link-dark rounded">Add new equipment</a></li>
+				<li><a href="#" class="link-dark rounded">Create issue report</a></li>
+				<?php if($_SESSION['role'] == "head"){?>
+				<li><a href="#" class="link-dark rounded">Manage users</a></li>
+				<?php	}
+				?>
+			  </ul>
+			</div>
+		  </li>
+		  
+		  
+			<!--<ul class="nav nav-pills flex-column mb-auto">
+				<li class="nav-item">
+					<a href="#" class="nav-link active" aria-current="page">
+					<svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+					Employees
+					</a>
+
+			
+			</ul>
+			
+			<button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#users-collapse" aria-expanded="false">
+			  Employees
+			</button>
+			
+			<div class="collapse" id="users-collapse">
+			  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+				<li><a href="#" class="link-dark rounded">Normal users</a></li>
+				<li><a href="#" class="link-dark rounded">Admin users</a></li>
+				<li><a href="#" class="link-dark rounded">All users</a></li>
+			  </ul>
+			</div>-->
+		
+
+			</li>
+
+		  
+		  
+		  
+		  <?php
+			} else{
+		  ?>
+			
+			<ul class="nav nav-pills flex-column mb-auto">
+			  <li class="nav-item">
+				<a href="#" class="nav-link active" aria-current="page">
+				  <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+				  Tasks
+				</a>
+			  </li>
+			  <li>
+				<a href="#" class="nav-link link-dark">
+				  <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+				  Reports
+				</a>
+			  </li>
+			</ul>
+			
+			
+			
+			<?php
+			}
+			?>
+		  <li class="border-top my-3"></li>
+		 
+		
+		
+		  <div class="d-grid gap-2">
+			<a class="btn btn-primary btn-large" href="backend/logout.p.php">
+			  Sign out
+			</a>
+			
+		  </div>
+		</ul>
+		</div>
+	  </div>
+	</div>
+	
+	
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+	(function () {
+	  'use strict'
+	  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+	  tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+		new bootstrap.Tooltip(tooltipTriggerEl)
+	  })
+	})()
+  </script>
+

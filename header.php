@@ -46,17 +46,17 @@
 		<div class="dropdown mt-3">
 		<ul class="list-unstyled ps-0">
 		<?php
-			if($_SESSION['role'] == "admin" || $_SESSION['role'] == "head"){
+			if($_SESSION['role'] == "Admin" || $_SESSION['role'] == "Head"){
 		?>
 		
 		
 		  <li class="mb-1">
-			<a class="btn btn-toggle align-items-center rounded" href="#">
+			<a class="btn btn-toggle align-items-center rounded" href="index.php?site=Dashboard&page=1">
 			  Dashboard
 			</a>
 		  </li>
 		  <li class="mb-1">
-			<a class="btn btn-toggle align-items-center rounded" href="#">
+			<a class="btn btn-toggle align-items-center rounded" href="reports.php?site=Reports&page=1&time=day">
 			  Reports
 			</a>
 		  <!--
@@ -75,7 +75,7 @@
 		  </li>
 		  
 		  <li class="mb-1">
-		  <a class="btn btn-toggle align-items-center rounded" href="#">
+		  <a class="btn btn-toggle align-items-center rounded" href="issues.php?site=Issues&page=1&time=month">
 			  Issues
 			</a>
 		  <!--
@@ -94,7 +94,7 @@
 		  </li>
 		  
 		  <li class="mb-1">
-			<a class="btn btn-toggle align-items-center rounded" href="#">
+			<a class="btn btn-toggle align-items-center rounded" href="equipment.php?site=Equipment&page=1">
 			  Equipment inventory
 			</a>
 			<!--
@@ -119,11 +119,18 @@
 			</button>
 			<div class="collapse" id="orders-collapse">
 			  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-				<li><a href="#" class="link-dark rounded">Assign reports</a></li>
+				<li><a href="#" class="link-dark rounded">Tasks <span class="badge badge-danger"><?php 
+					include 'backend/count_task_assigned_admin.p.php';
+					
+				?></span></a></li>
+				<li><a href="assignNewTask.php?site=Assign new task" class="link-dark rounded">Assign new task</a></li>
+				<?php if($_SESSION['role'] == "Head"){?>
 				<li><a href="#" class="link-dark rounded">Assign issue report</a></li>
+				<?php	}
+				?>
 				<li><a href="#" class="link-dark rounded">Add new equipment</a></li>
 				<li><a href="#" class="link-dark rounded">Create issue report</a></li>
-				<?php if($_SESSION['role'] == "head"){?>
+				<?php if($_SESSION['role'] == "Head"){?>
 				<li><a href="#" class="link-dark rounded">Manage users</a></li>
 				<?php	}
 				?>
@@ -201,6 +208,9 @@
 	
 	
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
+
+
   
   <script type="text/javascript">
 	(function () {
@@ -210,5 +220,15 @@
 		new bootstrap.Tooltip(tooltipTriggerEl)
 	  })
 	})()
+	
+	document.addEventListener("DOMContentLoaded", () =>{
+		const rows = document.querySelectorAll("tr[data-href]");
+		
+		rows.forEach(row => {
+			row.addEventListener("click", ()=>{
+				window.location.href = row.dataset.href;
+			});
+		});
+	});
   </script>
 

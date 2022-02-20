@@ -105,7 +105,6 @@
 		  <th scope="col">Date Due</th>
 		  <th scope="col">Date submitted</th>
 		  <th scope="col">Assigned to</th>
-		  <th scope="col">Create issue</th>
 		</tr>
 	  </thead>
 	  <tbody>

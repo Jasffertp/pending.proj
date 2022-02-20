@@ -13,8 +13,8 @@
 		<div class="row">
 			<div class="col p-2">
 				<div class="btn-group">
-				  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Action
+				  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Floor
 				  </button>
 				  <div class="dropdown-menu">
 					<a class="dropdown-item" href="#">Action</a>
@@ -107,7 +107,7 @@
 		  <th scope="col">Report status</th>
 		  <th scope="col">Date submitted</th>
 		  <th scope="col">For repair</th>
-		  <th scope="col">Submitted by</th>
+		  <th scope="col">Assigned to</th>
 		</tr>
 	  </thead>
 	  <tbody>

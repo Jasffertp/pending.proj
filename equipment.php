@@ -25,4 +25,7 @@
 		?>
 	  </tbody>
 	</table>
+	<?php
+		include 'backend/equipment_pagination.p.php';
+	?>
 </div>

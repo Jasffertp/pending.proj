@@ -95,7 +95,7 @@
 				  }?>
 				 
 				  <td><?php echo $row_dates['username'];?></td>
-				  <td><a href="createIssue.php?site=Create issue log" class="btn btn-success" role="button" aria-pressed="true">Create issue log</a></td>
+				  <td><a href="createIssue.php?site=Create issue report" class="btn btn-success" role="button" aria-pressed="true">Create issue report</a></td>
 				</tr>
 				<br>
 			<?php

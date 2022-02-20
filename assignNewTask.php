@@ -1,11 +1,11 @@
-<?php
-	session_start();
-	include 'header.php';
-?>
 
 <head>
 	<title>Assign new task</title>
 </head>
+<?php
+	session_start();
+	include 'header.php';
+?>
 <?php 
     if(isset($_SESSION['status']))
     {
@@ -20,7 +20,7 @@
 ?>
 	<div class="main_content">
         <div class="info">
-					<form action="get_task.p.php" method="post">
+					<form action="get_task.p.php" class="p-3" method="post">
 						<div class="form-group">
 						<label>Type of Machine</label>
               			<select class="form-control" name="typeOfMachine" id="typeOfMachine">
@@ -32,7 +32,7 @@
             			</div>
             			
 						<div class="form-group">
-							<label for="formGroupExampleInput2">Machine</label>
+							<label>Machine</label>
 							<input type="text" class="form-control" id="machine" name="machine"placeholder="Select Machine" disabled>
 							<select class="form-control" name="airconForm" id="airconForm">
 							  <option value="">--</option>
@@ -82,11 +82,6 @@
 						</div> 
 						<button class="btn btn-primary mb-2" type="submit" name="submit">Submit</button>
 					</form>
-					<?php
-						date_default_timezone_set('Asia/Hong_Kong');
-						$date = date('Y-m-d h:i:s a', time());
-						echo $date;
-					?>
 				</div>
     </div>
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

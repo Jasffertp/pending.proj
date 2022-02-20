@@ -128,8 +128,8 @@
 				<li><a href="#" class="link-dark rounded">Assign issue report</a></li>
 				<?php	}
 				?>
-				<li><a href="#" class="link-dark rounded">Add new equipment</a></li>
-				<li><a href="#" class="link-dark rounded">Create issue report</a></li>
+				<li><a href="addNewEquipment.php?site=Add new equipment" class="link-dark rounded">Add new equipment</a></li>
+				<li><a href="createIssue.php?site=Create issue report" class="link-dark rounded">Create issue report</a></li>
 				<?php if($_SESSION['role'] == "Head"){?>
 				<li><a href="#" class="link-dark rounded">Manage users</a></li>
 				<?php	}

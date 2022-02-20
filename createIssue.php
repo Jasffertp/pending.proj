@@ -1,11 +1,11 @@
+
+<head>
+	<title>Create issue report</title>
+</head>
 <?php
 	session_start();
 	include 'header.php';
 ?>
-
-<head>
-	<title>Create issue log</title>
-</head>
 <?php 
     if(isset($_SESSION['status']))
     {
@@ -20,7 +20,7 @@
 ?>
 	<div class="main_content">
         <div class="info">
-					<form action="get_issue.p.php" method="post">
+					<form action="get_issue.p.php" class="p-3" method="post">
 						<div class="form-group">
 						<label>Type of Machine</label>
               			<select class="form-control" name="typeOfMachine" id="typeOfMachine">

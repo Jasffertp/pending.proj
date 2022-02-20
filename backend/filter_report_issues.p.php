@@ -34,6 +34,7 @@ if (!mysqli_stmt_prepare($stmt, $sql_dates)){
 						$result_reports = mysqli_query($conn, $sql_report);
 						$row_reports = mysqli_fetch_array($result_reports);
 						
+						
 						$sql_users = "SELECT * FROM `users` WHERE (users_id = ".$row_reports['assigned_by']." OR users_id = ".$row_reports['assigned_user'].")";
 						
 						if(!mysqli_stmt_prepare($stmt, $sql_users)){
@@ -180,7 +181,7 @@ if (!mysqli_stmt_prepare($stmt, $sql_dates)){
 				}
 			}else if($row_dates['date_identity'] == 'issue'){
 				if($row_dates['date_type'] == 'created'){
-					$sql_issues = "SELECT issue_id, issue, assigned_to, date_due, date_created  FROM `issue` WHERE issue_id = ".$row_dates['report_issue_id']." ORDER by date_created";
+					$sql_issues = "SELECT issue_id, submitted_by, users_id, username, issue, assigned_to, date_due, date_created   FROM `issue`, `users` WHERE issue_id = ".$row_dates['report_issue_id']." AND submitted_by = users_id ORDER by date_created";
 					
 					if(!mysqli_stmt_prepare($stmt, $sql_issues)){
 						echo 'error connecting to database issues';
@@ -189,7 +190,7 @@ if (!mysqli_stmt_prepare($stmt, $sql_dates)){
 						$row_issue = mysqli_fetch_array($result_issue);
 						
 						
-						if($row_issue['assigned_to']){
+						if(isset($row_issue['assigned_to'])){
 							$sql_user = "SELECT * FROM `users` WHERE users_id = ".$row_issue['assigned_to']."";
 							
 							if(!mysqli_stmt_prepare($stmt, $sql_user)){
@@ -221,9 +222,11 @@ if (!mysqli_stmt_prepare($stmt, $sql_dates)){
 							  <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
 								<div class="d-flex justify-content-between">
 								  <strong class="text-gray-dark">KEOMS</strong>
-								  <p class="mb-2"><?php echo $row_reports['date_submitted']?></p>
+								  <p class="mb-2"><?php echo $row_issue['date_created']?></p>
 								</div>
-								<span class="d-block">Unassigned issue: <?php echo $row_issue['issue']?></span>
+								<span class="d-block">Employee 
+								<?php echo $row_issue['username']?> submitted an  Unassigned issue: 
+								<?php echo $row_issue['issue']?></span>
 							  </div>
 							</a>
 							<?php

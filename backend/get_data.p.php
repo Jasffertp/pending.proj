@@ -2,7 +2,7 @@
 	session_start();
 	include 'dbh.p.php';
 	
-	$sql = "SELECT * from issue";
+	$sql = "SELECT * from reports";
 	$stmt = mysqli_stmt_init($conn);
 	$count = 0;
 	
@@ -14,7 +14,7 @@
 		if($result->num_rows > 0){
 			while($row= mysqli_fetch_array($result)){
 				$count = $count + 1;
-				echo $row['report_id']." ".$row['col1_machine']." ".$row['cole_desc']." ".$row['col3_status']."<br>";
+				echo $row['report_id']." ".$row['machine_id']." ".$row['task']." ".$row['task_due']."<br>";
 			}
 			
 			echo  '<br>total results: '.$count;

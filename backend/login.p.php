@@ -31,14 +31,19 @@
 				}else{
 					
 					session_start();
-					$_SESSION['userId'] = $row['id'];
+					$_SESSION['userId'] = $row['users_id'];
 					$_SESSION['fname'] = $row['fname'];
 					$_SESSION['lname'] = $row['lname'];
 					$_SESSION['username'] = $row['username'];
 					$_SESSION['email'] = $row['email'];
 					$_SESSION['role'] = $row['role'];
 					
-					header("location: ../index.php?loginsuccessful&email=".$_SESSION['email']."&role=".$_SESSION['role']."&site=Dashboard");
+					if($row['role'] != 'Technician'){
+						header("location: ../index.php?role=".$_SESSION['role']."&site=Dashboard&page=1");
+					}else{
+						header("location: ../index.php?role=".$_SESSION['role']."&site=Tasks&page=1&id=".$_SESSION['userId']."");
+					}
+					
 				}
 			}else{
 				header('location: ../login.php?error=userdoesnotexist');

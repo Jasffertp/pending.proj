@@ -68,7 +68,6 @@
 				  }?>
 				  <td><?php echo $row_dates['username'];?></td>
 				</tr>
-				<br>
 			<?php
 				}else if($_GET['site'] == "Issues"){
 					?>
@@ -94,10 +93,19 @@
 					  ?><td><?php echo $row_dates['date_issue_resolved'];?></td><?php
 				  }?>
 				 
-				  <td><?php echo $row_dates['username'];?></td>
-				  <td><a href="createIssue.php?site=Create issue report" class="btn btn-success" role="button" aria-pressed="true">Create issue report</a></td>
+				 <?php
+					if(is_null($row_dates['username'])){
+						?>
+						 <td><a href="createIssue.php?site=Create issue log" class="btn btn-success" role="button" aria-pressed="true">Create issue log</a></td>
+						<?php
+					}else{
+						?>
+						<td><?php echo $row_dates['username'];?></td>
+						<?php
+					}
+				 ?>
+				  
 				</tr>
-				<br>
 			<?php
 				}
 			}
@@ -105,7 +113,7 @@
 		}else{
 			?>
 				<tr>
-					<td colspan="7" class="text-center"> There are no issue reports</td>
+					<td colspan="7" class="text-center"> There are no reports</td>
 				</tr>
 			<?php
 		}

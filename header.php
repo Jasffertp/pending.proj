@@ -131,7 +131,7 @@
 				<li><a href="assign_issue_reports.php?site=Unassigned%20Reports" class="link-dark rounded">Assign issue report</a></li>
 				<?php	}
 				?>
-				<li><a href="#" class="link-dark rounded">Add new equipment</a></li>
+				<li><a href="add_new_equipment.php?site=Add%20New%20Equipment" class="link-dark rounded">Add new equipment</a></li>
 				<li><a href="assign_issue.php?site=Report%20Issue" class="link-dark rounded">Create issue report</a></li>
 				<?php if($_SESSION['role'] == "Head"){?>
 				<li><a href="users.php?page=1&site=Users" class="link-dark rounded">Manage users</a></li>

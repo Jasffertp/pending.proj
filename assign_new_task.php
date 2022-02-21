@@ -1,12 +1,11 @@
-<?php
-	session_start();
-	include 'header.php';
-?>
-
 <head>
 	<title>Assign new task</title>
 
 </head>
+<?php
+	session_start();
+	include 'header.php';
+?>
 <?php 
     if(isset($_GET['status']) && $_GET['status'] == 'submitted')
     {
@@ -25,6 +24,8 @@
 						
 							if(isset($_GET['asset']) && isset($_GET['machine']) && isset($_GET['e_id']) && isset($_GET['room'])){
 								?>
+								<h2>Machine Details</h2>
+								<hr class="rounded">
 									<div class="form-group">
 									<label>Type of Machine</label>
 									<select class="form-control" name="typeOfMachine" id="typeOfMachine" readonly>
@@ -45,6 +46,8 @@
 								<?php
 							}else{
 								?>
+							<h2>Machine Details</h2>
+							<hr class="rounded">
 								<div class="form-group">
 								<label>Type of Machine</label>
 								<select class="form-control" name="typeOfMachine" id="typeOfMachine">
@@ -74,7 +77,9 @@
 								<?php
 							}
 						?>
-						
+						<br>
+						<h2>Task Assignment</h2>
+						<hr class="rounded">
 
 						<div class="form-group">
 							<label for="formGroupExampleInput2">Task</label>

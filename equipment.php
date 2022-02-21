@@ -6,6 +6,9 @@
 	include 'header.php';
 ?>
 <div class="container-fluid py-4 overflow-hidden">
+	<div>
+		<a href="add_new_equipment.php?site=Add%20New%20Equipment" class="btn btn-success" role="button" aria-pressed="true">Add new equipment</a>
+	</div><br>
 	<table class="table rounded-3 shadow-lg table-hover mb-5">
 	  <thead class="thead-dark">
 		<tr>

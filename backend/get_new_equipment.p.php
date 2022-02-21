@@ -40,13 +40,13 @@ if(isset($_POST['submit']))
 			mysqli_stmt_bind_param($stmt, "sis", $floor, $room_number, $room_classification);
 			mysqli_stmt_execute($stmt);
 			
-			$d_due = "INSERT INTO `equipment`( `equipment_name`, `asset`, `brand`, `machine_description`, `model_no`, `serial_no`, `date_of_purchase`) VALUES (?,?,?,?,?,?,?)";
+			$d_due = "INSERT INTO `equipment`( `equipment_name`, `asset`, `brand`, `machine_description`, `location_id`, `model_no`, `serial_no`, `date_of_purchase`) VALUES (?,?,?,?,?,?,?,?)";
 			
 			if(!mysqli_stmt_prepare($stmt, $d_due)){
 				header("Location: ../add_new_equipment.php?site=Add%20new%20equipment&error=d%20due");
 				exit();
 			}else{
-				mysqli_stmt_bind_param($stmt, "sssssis", $equipment_name, $asset, $brand, $machine_description, $model_no, $serial_no, $date_of_purchase);
+				mysqli_stmt_bind_param($stmt, "ssssisis", $equipment_name, $asset, $brand, $machine_description, $location_id, $model_no, $serial_no, $date_of_purchase);
 				mysqli_stmt_execute($stmt);
 				
 					

@@ -51,7 +51,7 @@
 				<?php
 				}else if($_SESSION['role'] == "Technician"){
 				?>
-					<tr role="button" data-href="backend/tasks_preview.p.php?task=<?php echo $row['equipment_id'];?>&e=<?php echo $row['equipment_name'];?>">
+					<tr role="button" data-href="backend/tasks_preview.p.php?task=<?php echo $row['report_id'];?>&e=<?php echo $row['machine_id'];?>">
 						<td><?php echo $row['task'];?></td>
 						<td><?php echo $row['equipment_name'];?></td>
 						<td><?php echo $row['floor'];?></td>

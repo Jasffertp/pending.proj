@@ -14,9 +14,9 @@
 	
 </head>
 <body style="background-color: rgba(0, 0, 0, .1);">	
-	<nav class="navbar navbar-dark bg-dark">
+	<nav class="navbar navbar-dark" style="background-color: rgba(34, 18, 119, 1);">
 	  <div class="container-fluid">
-		<a class="navbar-toggler" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample" style="margin-right: 16px;">
+		<a class="navbar-toggler" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample" style="margin-right: 16px; color: yellow;">
 			<span class="navbar-toggler-icon"></span>
 		</a>
         <ul class="navbar-nav me-auto">
@@ -38,7 +38,8 @@
   
 	<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
 	  <div class="offcanvas-header">
-		<h5 class="offcanvas-title" id="offcanvasExampleLabel">KEOMS</h5>
+		<div>
+		<h5 class="offcanvas-title" id="offcanvasExampleLabel">KEOMS </h5> </div>
 		<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 	  </div>
 	  <div class="offcanvas-body">
@@ -54,7 +55,7 @@
 		
 		  <li class="mb-1">
 			<a class="btn btn-toggle align-items-center rounded" href="index.php?site=Dashboard&page=1">
-			  Dashboard
+			  Dashboard </i>
 			</a>
 		  </li>
 		  <li class="mb-1">

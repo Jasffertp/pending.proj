@@ -1,8 +1,17 @@
+<?php
+	if (isset($_SESSION['role'])){
+		
+?>
+
 <html lang="en">
 <head>
 	<title>header</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
@@ -14,9 +23,9 @@
 	
 </head>
 <body style="background-color: rgba(0, 0, 0, .1);">	
-	<nav class="navbar navbar-dark" style="background-color: rgba(34, 18, 119, 1);">
+	<nav class="navbar navbar-dark bg-dark">
 	  <div class="container-fluid">
-		<a class="navbar-toggler" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample" style="margin-right: 16px; color: yellow;">
+		<a class="navbar-toggler" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample" style="margin-right: 16px;">
 			<span class="navbar-toggler-icon"></span>
 		</a>
         <ul class="navbar-nav me-auto">
@@ -38,8 +47,7 @@
   
 	<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
 	  <div class="offcanvas-header">
-		<div>
-		<h5 class="offcanvas-title" id="offcanvasExampleLabel">KEOMS </h5> </div>
+		<h5 class="offcanvas-title" id="offcanvasExampleLabel">KEOMS</h5>
 		<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 	  </div>
 	  <div class="offcanvas-body">
@@ -55,7 +63,7 @@
 		
 		  <li class="mb-1">
 			<a class="btn btn-toggle align-items-center rounded" href="index.php?site=Dashboard&page=1">
-			  Dashboard </i>
+			  Dashboard
 			</a>
 		  </li>
 		  <li class="mb-1">
@@ -122,7 +130,7 @@
 			</button>
 			<div class="collapse" id="orders-collapse">
 			  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-				<li><a href="tasks.php?site=Issues&page=1" class="link-dark rounded">Tasks <span class="badge badge-danger"><?php 
+				<li><a href="tasks.php?site=Unresolved%20Issues&page=1" class="link-dark rounded">Tasks <span class="badge badge-danger"><?php 
 					
 					include 'backend/count_task_assigned_admin.p.php';
 					
@@ -132,7 +140,7 @@
 				<li><a href="assign_issue_reports.php?site=Unassigned%20Reports" class="link-dark rounded">Assign issue report</a></li>
 				<?php	}
 				?>
-				<li><a href="add_new_equipment.php?site=Add%20New%20Equipment" class="link-dark rounded">Add new equipment</a></li>
+				<li><a href="add_new_equipment.php" class="link-dark rounded">Add new equipment</a></li>
 				<li><a href="assign_issue.php?site=Report%20Issue" class="link-dark rounded">Create issue report</a></li>
 				<?php if($_SESSION['role'] == "Head"){?>
 				<li><a href="users.php?page=1&site=Users" class="link-dark rounded">Manage users</a></li>
@@ -241,7 +249,10 @@
 	
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
-
+	<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -278,3 +289,10 @@
 	});
   </script>
 
+<?php
+
+	}else{
+		header("Location: login.php");
+		exit();
+	}
+?>

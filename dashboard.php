@@ -8,7 +8,7 @@
 		  <div class="container-fluid py-3 overflow-hidden">
 			<div class="row mb-2">
 				<div class="col text-light p-2">
-					<a class="container btn btn-primary rounded-3 d-flex gap-3 p-4" href="login.php" role="button"
+					<a class="container btn btn-primary rounded-3 d-flex gap-3 p-4" href="n_issues.php?site=New%20Unassigned%20Issues&page=1" role="button"
 					style="margin-bottom:4px;white-space: normal;">
 						<p class="display-3  font-weight-bold"><?php include 'backend/count_new_issues.p.php';?></p>
 						<div class=" text-left">
@@ -19,7 +19,7 @@
 					</a>
 				</div>
 				<div class="col text-light p-2">
-					<a class="container btn btn-primary rounded-3 d-flex gap-3 p-4" href="login.php" role="button"
+					<a class="container btn btn-primary rounded-3 d-flex gap-3 p-4" href="p_issues.php?site=Pending%20Tasks&page=1" role="button"
 					style="margin-bottom:4px;white-space: normal;">
 						<p class="display-3  font-weight-bold"><?php include 'backend/count_issues.p.php';?></p>
 						<div class=" text-left">
@@ -30,7 +30,7 @@
 					</a>
 				</div>
 				<div class="col text-light p-2">
-					<a class="container btn btn-primary rounded-3 d-flex gap-3 p-4" href="login.php" role="button"
+					<a class="container btn btn-primary rounded-3 d-flex gap-3 p-4" href="o_issues.php?site=Overdue%20Issues&page=1" role="button"
 					style="margin-bottom:4px;white-space: normal;">
 						<p class="display-3  font-weight-bold"><?php include 'backend/count_overdue_issues.p.php';?></p>
 						<div class=" text-left">
@@ -44,19 +44,19 @@
 			</div>
 			<div class="row">
 				<div class="col text-light p-2">
-					<a class="container btn btn-primary rounded-3 d-flex gap-3 p-4" href="login.php" role="button"
+					<a class="container btn btn-primary rounded-3 d-flex gap-3 p-4" href="i_users.php?site=Inactive%20Users&page=1" role="button"
 					style="margin-bottom:4px;white-space: normal;">
 						<p class="display-3  font-weight-bold"><?php
 							include 'backend/idle_users.p.php';
 						?></p>
 						<div class=" text-left">
-							<h4 class="mb-0 text-uppercase">idle employees</h6>
+							<h4 class="mb-0 text-uppercase">Inactive employees</h6>
 							<p class="mb-0 text-light">The number of users with no assigned tasks</p>
 						</div>
 					</a>
 				</div>
 				<div class="col text-light p-2">
-					<a class="container btn btn-primary rounded-3 d-flex gap-3 p-4" href="login.php" role="button"
+					<a class="container btn btn-primary rounded-3 d-flex gap-3 p-4" href="u_tasks.php?site=Unfinished%20Tasks&page=1" role="button"
 					style="margin-bottom:4px;white-space: normal;">
 						<p class="display-3  font-weight-bold"><?php 
 							include 'backend/count_unfinished.p.php';
@@ -68,7 +68,7 @@
 					</a>
 				</div>
 				<div class="col text-light p-2">
-					<a class="container btn btn-primary rounded-3 d-flex gap-3 p-4" href="login.php" role="button"
+					<a class="container btn btn-primary rounded-3 d-flex gap-3 p-4" href="equipment_issues.php?site=Equipment%20with%20issues&page=1" role="button"
 					style="margin-bottom:4px; white-space: normal;">
 						<p class="display-3 font-weight-bold"><?php
 							include 'backend/count_equipment_issues.p.php';

@@ -24,8 +24,6 @@
 						
 							if(isset($_GET['asset']) && isset($_GET['machine']) && isset($_GET['e_id']) && isset($_GET['room'])){
 								?>
-								<h2>Machine Details</h2>
-								<hr class="rounded">
 									<div class="form-group">
 									<label>Type of Machine</label>
 									<select class="form-control" name="typeOfMachine" id="typeOfMachine" readonly>
@@ -46,8 +44,6 @@
 								<?php
 							}else{
 								?>
-							<h2>Machine Details</h2>
-							<hr class="rounded">
 								<div class="form-group">
 								<label>Type of Machine</label>
 								<select class="form-control" name="typeOfMachine" id="typeOfMachine">
@@ -78,9 +74,6 @@
 							}
 						?>
 
-						<br>
-						<h2>Issue Details</h2>
-						<hr class="rounded">
 						<div class="form-group">
 							<label>Issue</label>
 							<input type="text" class="form-control" name="issue" placeholder="What is the issue?" required>

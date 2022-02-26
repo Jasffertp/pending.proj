@@ -1,7 +1,7 @@
 <head>
 	<title>Reports</title>
 	<script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
-<script type="text/javascript" src="Scripts/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="Scripts/jquery-2.1.1.min.js"></script>
 </head>
 <?php
 	session_start();
@@ -100,14 +100,142 @@
 	<table class="table rounded-3 shadow-lg table-hover mb-5">
 	  <thead class="thead-dark">
 		<tr>
-		  <th scope="col">Task</th>
-		  <th scope="col">Equipment</th>
-		  <th scope="col">Floor</th>
-		  <th scope="col">Room Number</th>
-		  <th scope="col">Report status</th>
-		  <th scope="col">Date submitted</th>
-		  <th scope="col">For repair</th>
-		  <th scope="col">Assigned to</th>
+		  <th scope="col"><a class="nav-link text-light" href="reports.php?site=Reports&time=<?php
+			if(isset($_GET['time'])){
+				echo $_GET['time'];
+			}else{
+				echo 'day';
+			}
+		  ?>&page=1&order=task&by=<?php
+			if(isset($_GET['by'])){
+				if($_GET['by'] == 'asc'){
+					echo 'desc';
+				}else{
+					echo 'asc';
+				}
+			}else{
+				echo 'asc';
+			}
+		  ?>">Task</a></th>
+		  <th scope="col"><a class="nav-link text-light" href="reports.php?site=Reports&time=<?php
+			if(isset($_GET['time'])){
+				echo $_GET['time'];
+			}else{
+				echo 'day';
+			}
+		  ?>&page=1&order=equipment_name&by=<?php
+			if(isset($_GET['by'])){
+				if($_GET['by'] == 'asc'){
+					echo 'desc';
+				}else{
+					echo 'asc';
+				}
+			}else{
+				echo 'asc';
+			}
+		  ?>">Equipment</a></th>
+		  <th scope="col"><a class="nav-link text-light" href="reports.php?site=Reports&time=<?php
+			if(isset($_GET['time'])){
+				echo $_GET['time'];
+			}else{
+				echo 'day';
+			}
+		  ?>&page=1&order=floor&by=<?php
+			if(isset($_GET['by'])){
+				if($_GET['by'] == 'asc'){
+					echo 'desc';
+				}else{
+					echo 'asc';
+				}
+			}else{
+				echo 'asc';
+			}
+		  ?>">Floor</a></th>
+		  <th scope="col"><a class="nav-link text-light" href="reports.php?site=Reports&time=<?php
+			if(isset($_GET['time'])){
+				echo $_GET['time'];
+			}else{
+				echo 'day';
+			}
+		  ?>&page=1&order=room_number&by=<?php
+			if(isset($_GET['by'])){
+				if($_GET['by'] == 'asc'){
+					echo 'desc';
+				}else{
+					echo 'asc';
+				}
+			}else{
+				echo 'asc';
+			}
+		  ?>">Room Number</a></th>
+		  <th scope="col"><a class="nav-link text-light" href="reports.php?site=Reports&time=<?php
+			if(isset($_GET['time'])){
+				echo $_GET['time'];
+			}else{
+				echo 'day';
+			}
+		  ?>&page=1&order=report_status&by=<?php
+			if(isset($_GET['by'])){
+				if($_GET['by'] == 'asc'){
+					echo 'desc';
+				}else{
+					echo 'asc';
+				}
+			}else{
+				echo 'asc';
+			}
+		  ?>">Report status</a></th>
+		  <th scope="col"><a class="nav-link text-light" href="reports.php?site=Reports&time=<?php
+			if(isset($_GET['time'])){
+				echo $_GET['time'];
+			}else{
+				echo 'day';
+			}
+		  ?>&page=1&order=date_submitted&by=<?php
+			if(isset($_GET['by'])){
+				if($_GET['by'] == 'asc'){
+					echo 'desc';
+				}else{
+					echo 'asc';
+				}
+			}else{
+				echo 'asc';
+			}
+		  ?>">Date submitted</a></th>
+		  <th scope="col"><a class="nav-link text-light" href="reports.php?site=Reports&time=<?php
+			if(isset($_GET['time'])){
+				echo $_GET['time'];
+			}else{
+				echo 'day';
+			}
+		  ?>&page=1&order=for_repair&by=<?php
+			if(isset($_GET['by'])){
+				if($_GET['by'] == 'asc'){
+					echo 'desc';
+				}else{
+					echo 'asc';
+				}
+			}else{
+				echo 'asc';
+			}
+		  ?>">For repair</a></th>
+		  <th scope="col"><a class="nav-link text-light" href="reports.php?site=Reports&time=<?php
+			if(isset($_GET['time'])){
+				echo $_GET['time'];
+			}else{
+				echo 'day';
+			}
+		  ?>&page=1&order=username&by=<?php
+			if(isset($_GET['by'])){
+				if($_GET['by'] == 'asc'){
+					echo 'desc';
+				}else{
+					echo 'asc';
+				}
+			}else{
+				echo 'asc';
+			}
+		  ?>">Assigned to</a></th>
 		</tr>
 	  </thead>
 	  <tbody>

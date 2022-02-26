@@ -30,7 +30,11 @@
 								</div>
 								<div class="col">
 									<label>Asset</label>
-									<input type="text" class="form-control" name="asset" placeholder="Asset">
+									<select class="form-control" name="asset" required>
+										<option value="">--</option>
+										<option value="Basement 3">HVAC</option>
+										<option value="Basement 3">Genset</option>
+									</select>
 								</div>
 							</div><br>
 							<div class="row">
@@ -64,11 +68,28 @@
 							<div class="row">
 								<div class="col">
 									<label>Floor</label>
-									<input type="text" class="form-control" name="floor" placeholder="Floor">
+									<select class="form-control" name="floor" required>
+										<option value="">--</option>
+										<option value="Basement 3">Basement 3</option>
+										<option value="Basement 2">Basement 2</option>
+										<option value="Basement 1">Basement 1</option>
+										<option value="1st floor">1st floor</option>
+										<option value="2nd floor">2nd floor</option>
+										<option value="3rd floor">3rd floor</option>
+										<option value="4th floor">4th floor</option>
+										<option value="5th floor">5th floor</option>
+										<option value="6th floor">6th floor</option>
+										<option value="7th floor">7th floor</option>
+										<option value="8th floor">8th floor</option>
+										<option value="9th floor">9th floor</option>
+										<option value="10th floor">10th floor</option>
+										<option value="11th floor">11th floor</option>
+										<option value="12th floor">12th floor</option>
+									</select>
 								</div>
 								<div class="col">
 									<label>Room number</label>
-									<input type="number" class="form-control" name="room_number" placeholder="Room number">
+									<input type="text" class="form-control" name="room_number" placeholder="Room number">
 								</div>
 								<div class="col">
 									<label>Room Classification</label>

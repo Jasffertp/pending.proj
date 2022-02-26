@@ -1,11 +1,12 @@
-<head>
-	<title>Assign new task</title>
-
-</head>
 <?php
 	session_start();
 	include 'header.php';
 ?>
+
+<head>
+	<title>Assign new task</title>
+
+</head>
 <?php 
     if(isset($_GET['status']) && $_GET['status'] == 'submitted')
     {
@@ -24,8 +25,6 @@
 						
 							if(isset($_GET['asset']) && isset($_GET['machine']) && isset($_GET['e_id']) && isset($_GET['room'])){
 								?>
-								<h2>Machine Details</h2>
-								<hr class="rounded">
 									<div class="form-group">
 									<label>Type of Machine</label>
 									<select class="form-control" name="typeOfMachine" id="typeOfMachine" readonly>
@@ -46,8 +45,6 @@
 								<?php
 							}else{
 								?>
-							<h2>Machine Details</h2>
-							<hr class="rounded">
 								<div class="form-group">
 								<label>Type of Machine</label>
 								<select class="form-control" name="typeOfMachine" id="typeOfMachine">
@@ -77,9 +74,7 @@
 								<?php
 							}
 						?>
-						<br>
-						<h2>Task Assignment</h2>
-						<hr class="rounded">
+						
 
 						<div class="form-group">
 							<label for="formGroupExampleInput2">Task</label>
@@ -91,12 +86,24 @@
 						</div>
 						<div class="form-group">
 							<label for="typeOfForm">Assign To</label>
+							<?php
+								if(isset($_GET['u_id']) && isset($_GET['username'])){
+									?>
+									<select class="form-control" name="assignedTo" readonly>
+										  <option value="<?php echo $_GET['u_id'];?>" selected><?php echo $_GET['username'];?></option>
+								    </select>
+									<?php
+								}else{
+							?>
 							  <select class="form-control" name="assignedTo">
 								  <option value="">--</option>
 									<?php
 									include 'backend/get_technicians.p.php';
 									?>
 							  </select>
+							<?php
+								}
+							?>
 						</div>
 						<div class="form-group">
 							<label for="formGroupExampleInput2">Due date & time</label>

@@ -21,7 +21,7 @@
 				<th scope="col">Due date</th>
 				<th scope="col">Date submitted</th>
 				<th scope="col">Status</th>
-				<th scope="col">Edit</th>
+				<th scope="col">Action</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -46,7 +46,7 @@
 				<th scope="col">Room</th>
 				<th scope="col">Date created</th>
 				<th scope="col">Status</th>
-				<th scope="col">Edit</th>
+				<th scope="col">Action</th>
 				</tr>
 			</thead>
 			<tbody>

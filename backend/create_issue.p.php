@@ -77,8 +77,19 @@ if(isset($_POST['submit']))
 						
 						mysqli_stmt_execute($stmt);
 						
-						header("Location: ../assign_issue.php?site=Report%20issue&status=submitted");
-						exit();
+						$equip = "UPDATE `equipment` SET `condition`= 'with issues/abnormal reading' WHERE equipment_id = ".$e_id."";
+					
+	
+						if(!mysqli_stmt_prepare($stmt, $equip)){
+							header('Location:../users.php?updatenotsuccessful&page=1&site=Users');
+							exit();
+						}else{
+							$result = mysqli_query($conn,$equip);
+							
+							
+							header("Location: ../assign_issue.php?site=Submit%20issue&status=submitted");
+							exit();
+						}
 					}
 				}
 			}else{
@@ -104,8 +115,22 @@ if(isset($_POST['submit']))
 					
 					mysqli_stmt_execute($stmt);
 					
-					header("Location: ../assign_issue.php?site=Submit%20issue&status=submitted");
-					exit();
+					$equip = "UPDATE `equipment` SET `condition`= 'with issues/abnormal reading' WHERE equipment_id = ".$e_id."";
+					
+	
+					if(!mysqli_stmt_prepare($stmt, $equip)){
+						header('Location:../users.php?updatenotsuccessful&page=1&site=Users');
+						exit();
+					}else{
+						$result = mysqli_query($conn,$equip);
+						
+						echo $result;
+						
+						header("Location: ../assign_issue.php?site=Submit%20issue&status=submitted");
+						exit();
+					}
+	
+					
 				}
 			}
 		}

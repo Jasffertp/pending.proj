@@ -11,7 +11,7 @@
 		if($result->num_rows > 0){
 			while($row = mysqli_fetch_assoc($result)){
 				?>
-				<tr role="button" data-href="machines.php?page=1&site=Equipment Information&e_id=<?php echo $row['equipment_id'];?>">
+				<tr role="button" data-href="machines.php?page=1&site=Equipment Information&e_id=<?php echo $row['equipment_id'];?>&t=reports">
 				  <td><?php echo $row['equipment_name'];?></td>
 				  <td><?php echo $row['asset'];?></td>
 				  <td><?php echo $row['floor'];?></td>

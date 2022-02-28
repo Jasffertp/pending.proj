@@ -41,7 +41,7 @@
 						<td><?php echo $row['task_due'];?></td>
 						<td><?php echo $row['date_submitted'];?></td>
 						<td><?php echo 'Resolved';?></td>
-						<td><?php echo 'Modify';?></td>
+						<td><i class="fas fa-file-edit"></i> <i class="fas fa-trash-alt"></i></td>
 					</tr>
 				<?php
 				}
@@ -56,15 +56,44 @@
 			if($result->num_rows > 0){
 				while($row = mysqli_fetch_array($result)){
 					?>
-					<tr role="button" data-href="index.php?page=1&site=Tasks">
+					<tr role="button" >
 						<td><?php echo $row['issue'];?></td>
 						<td><?php echo $row['equipment_name'];?></td>
 						<td><?php echo $row['floor'];?></td>
 						<td><?php echo $row['room_number'];?></td>
 						<td><?php echo $row['date_created'];?></td>
-						<td><?php echo $row['issue_status'];?></td>
-						<td><?php echo 'Modify';?></td>
+						<td><?php 
+						
+						if($row['issue_status']){
+							echo 'resolved';
+						}else{
+							echo 'unresolved';
+						}
+							?></td>
+						<td><a href="assign_issue.php?edit=true&id=<?php echo $row['issue_id'];?>" type="button" class="btn btn-primary btn-sm"><i class="fas fa-edit h6 "></i></a> 
+						
+						<a type="button" class="btn btn-danger btn-sm " data-target="#<?php echo $row['issue_id'];?>" data-toggle="modal"><i class="fas fa-trash-alt h6" style="font-color:red;"></i></a></td>
 					</tr>
+					
+					<div class="modal fade" id="<?php echo $row['issue_id'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  <div class="modal-dialog" role="document">
+					<div class="modal-content">
+					  <div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Deleting issue</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						  <span aria-hidden="true">&times;</span>
+						</button>
+					  </div>
+					  <div class="modal-body">
+						Are you sure you want to delete the issue you reported? 
+					  </div>
+					  <div class="modal-footer">
+						<button type="button" class="btn btn-danger " data-dismiss="modal"><i class="fas fa-times"></i> Cancel</button>
+						<a href ="backend/delete_issue.p.php?id=<?php echo $row['issue_id'];?>" role="button" class="btn btn-primary"><i class="fas fa-check"></i> Delete Issue</a></td>
+					  </div>
+					</div>
+				  </div>
+				</div>
 				<?php
 				}
 			}else{

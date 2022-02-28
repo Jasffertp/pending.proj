@@ -51,12 +51,31 @@
 			  <?php
 		}
 		?>
-			<li class="page-item"><a class="page-link" href="<?php
+			<li class="page-item"><a class="page-link" href="reports.php?site=Reports&
+			<?php
 					if(($_GET['page']+1) > $pages){
 						echo '#';
 					}else{
 						$new_page = $_GET['page'] + 1;
-						echo 'reports.php?site=Reports&page='.$new_page.'&time='.$_GET['time'].'';
+						?>&page=<?php echo $new_page;?>&time=<?php echo $_GET['time'];?>
+						<?php
+					}
+				  ?>&order=<?php 
+				  if(isset($_GET['order'])){
+					  echo $_GET['order'];
+				  }else{
+					  echo 'date_time';
+				  }
+				  
+				  ?>&by=<?php
+					if(isset($_GET['by'])){
+						if($_GET['by'] == 'asc'){
+							echo 'desc';
+						}else{
+							echo 'asc';
+						}
+					}else{
+						echo 'asc';
 					}
 				  ?>">Next</a></li>
 				  </ul>

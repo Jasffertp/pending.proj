@@ -11,15 +11,58 @@
 		<div class="row">
 			<div class="col p-2">
 				<div class="btn-group">
-				  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Action
+				  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Floor
 				  </button>
 				  <div class="dropdown-menu">
-					<a class="dropdown-item" href="#">Action</a>
-					<a class="dropdown-item" href="#">Another action</a>
-					<a class="dropdown-item" href="#">Something else here</a>
-					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="#">Separated link</a>
+					<a class="dropdown-item" 
+					<?php
+					if(!isset($_GET['floor'])){
+						echo 'active';
+					}else if($_GET['floor'] == '1st Floor'){
+						echo 'active';
+					}
+					?>
+					href="#">1st Floor</a>
+
+					<a class="dropdown-item"
+					<?php
+					if(!isset($_GET['floor'])){
+						echo 'active';
+					}else if($_GET['floor'] == '2nd Floor'){
+						echo 'active';
+					}
+					?>
+					href="#">2nd Floor</a>
+
+					<a class="dropdown-item"
+					<?php
+					if(!isset($_GET['floor'])){
+						echo 'active';
+					}else if($_GET['floor'] == '3rd Floor'){
+						echo 'active';
+					}
+					?> 
+					href="#">3rd Floor</a>
+
+					<a class="dropdown-item"
+					<?php
+					if(!isset($_GET['floor'])){
+						echo 'active';
+					}else if($_GET['floor'] == '4th Floor'){
+						echo 'active';
+					}
+					?> href="#">4th Floor</a>
+
+					<a class="dropdown-item"
+					<?php
+					if(!isset($_GET['floor'])){
+						echo 'active';
+					}else if($_GET['floor'] == '5th Floor'){
+						echo 'active';
+					}
+					?> 
+					href="#">5th Floor</a>
 				  </div>
 				</div>
 			</div>
@@ -29,9 +72,23 @@
 					Report Status
 				  </button>
 				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-					<a class="dropdown-item" href="#">Action</a>
-					<a class="dropdown-item" href="#">Another action</a>
-					<a class="dropdown-item" href="#">Something else here</a>
+					<a class="dropdown-item" <?php
+					if(isset($_GET['status'])){
+						if($_GET['status'] == '1'){
+							echo 'active';
+						}
+					}
+				?> href="issues.php?site=Issues&page=1&status=1">Resolved</a>
+					
+					<a class="dropdown-item" 
+					<?php
+					if(!isset($_GET['status'])){
+						echo 'active';
+					}else if($_GET['status'] == '0'){
+						echo 'active';
+					}
+				?> href="issues.php?site=Issues&page=1&status=0">Not resolved</a>
+
 				  </div>
 				</div>
 			</div>
@@ -41,9 +98,8 @@
 					For repair
 				  </button>
 				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-					<a class="dropdown-item" href="#">Action</a>
-					<a class="dropdown-item" href="#">Another action</a>
-					<a class="dropdown-item" href="#">Something else here</a>
+					<a class="dropdown-item" href="#">Yes</a>
+					<a class="dropdown-item" href="#">No</a>
 				  </div>
 				</div>
 			</div>
@@ -111,6 +167,9 @@
 	  
 		<?php
 			include 'backend/get_reports.p.php';
+		?>
+		<?php
+			include 'backend/dropdown_filter_status.p.php';s 
 		?>
 	  </tbody>
 	</table>

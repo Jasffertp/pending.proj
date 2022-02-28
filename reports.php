@@ -31,9 +31,24 @@
 					Report Status
 				  </button>
 				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-					<a class="dropdown-item" href="#">Action</a>
-					<a class="dropdown-item" href="#">Another action</a>
-					<a class="dropdown-item" href="#">Something else here</a>
+					<a class="dropdown-item" 
+					<?php
+					if(!isset($_GET['status'])){
+						echo 'active';
+					}else if($_GET['status'] == 'done'){
+						echo 'active';
+					}
+				?> href="reports.php?site=Reports&page=1&status=done">Done</a>
+					
+					<a class="dropdown-item" 
+					<?php
+					if(!isset($_GET['status'])){
+						echo 'active';
+					}else if($_GET['status'] == 'unresolved'){
+						echo 'active';
+					}
+				?> href="reports.php?site=Reports&page=1&status=unresolved">Unresolved</a>
+
 				  </div>
 				</div>
 			</div>
@@ -242,6 +257,9 @@
 	  
 		<?php
 			include 'backend/get_reports.p.php';
+		?>
+		<?php
+			include 'backend/dropdown_filter_status.p.php' 
 		?>
 	  </tbody>
 	</table>

@@ -45,9 +45,11 @@
 	  	
 	</nav>
   
-	<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+	<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" style="background-color: FFE162;">
 	  <div class="offcanvas-header">
-		<h5 class="offcanvas-title" id="offcanvasExampleLabel">KEOMS</h5>
+		<div class="offcanvas-title" id="offcanvasExampleLabel">
+			<img src="images/keoms_logo.png" alt="APC Logo" style="width:50px;height:50px;">
+			<h5><strong>KEOMS</strong></h5></div>
 		<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 	  </div>
 	  <div class="offcanvas-body">

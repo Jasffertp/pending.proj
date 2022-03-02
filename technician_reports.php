@@ -1,12 +1,11 @@
+<head>
+	<title>Create Issue Report</title>
+
+</head>
 <?php
 	session_start();
 	include 'header.php';
 ?>
-
-<head>
-	<title>Assign new task</title>
-
-</head>
 <?php 
     if(isset($_GET['status']) && $_GET['status'] == 'submitted')
     {

@@ -76,6 +76,7 @@
 		}else{
 	?>
 	<div class="form-signin">
+		<img src="images/keoms_logo.png" alt="APC Logo" style="width:100px;height:100px;"><br>
 		<h1 class="h1">K.E.O.M.S.</h1>
 		<h6 class="lead">Please Sign in</h6>
 		<form action="backend/login.p.php" method="POST" >
@@ -83,6 +84,8 @@
 			<input class="form-control" type="password" id="pass" name="pswd" required placeholder="Password"/>
 			<br>
 			<button class="btn btn-primary btn-lg btn-block" type="submit" name="submit" id="login">Sign in</button>
+			<br><br>
+			<img src="images/apc_logo2.png" alt="APC Logo" style="width:100px;height:50px;"><br>
 		</form>
 	</div>
 	

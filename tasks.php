@@ -1,3 +1,7 @@
+<head>
+	<title>Tasks</title>
+
+</head>
 <?php
 	if(!isset($_SESSION['role'])){
 		session_start();

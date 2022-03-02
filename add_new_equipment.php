@@ -1,5 +1,5 @@
 <head>
-	<title>Add new equipment</title>
+	<title>Add New Equipment</title>
 
 </head>
 <?php

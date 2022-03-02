@@ -1,11 +1,11 @@
+<head>
+	<title>Create Issue Report</title>
+</head>
 <?php
 	session_start();
 	include 'header.php';
 ?>
 
-<head>
-	<title>Create issue log</title>
-</head>
 <?php 
     if(isset($_GET['status']) && $_GET['status'] == 'submitted')
     {
@@ -20,6 +20,8 @@
 	<div class="container-fluid py-4">
         <div class="info">
 					<form action="backend/create_issue.p.php" method="post">
+						<h2>Machine Details</h2>
+						<hr class="rounded">
 						<?php
 						
 							if(isset($_GET['asset']) && isset($_GET['machine']) && isset($_GET['e_id']) && isset($_GET['room'])){
@@ -73,7 +75,9 @@
 								<?php
 							}
 						?>
-
+						<br>
+						<h2>Issue Details</h2>
+						<hr class="rounded">
 						<div class="form-group">
 							<label>Issue</label>
 							<input type="text" class="form-control" name="issue" placeholder="What is the issue?" required>

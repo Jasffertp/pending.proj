@@ -23,7 +23,7 @@
 	
 </head>
 <body style="background-color: rgba(0, 0, 0, .1);">	
-	<nav class="navbar navbar-dark bg-dark">
+	<nav class="navbar navbar-dark" style="background-color: rgba(34, 18, 119, 1);">
 	  <div class="container-fluid">
 		<a class="navbar-toggler" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample" style="margin-right: 16px;">
 			<span class="navbar-toggler-icon"></span>
@@ -106,7 +106,7 @@
 		  
 		  <li class="mb-1">
 			<a class="btn btn-toggle align-items-center rounded" href="equipment.php?site=Equipment&page=1">
-			  Equipment inventory
+			  Equipment Inventory
 			</a>
 			<!--
 			<button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
@@ -135,15 +135,15 @@
 					include 'backend/count_task_assigned_admin.p.php';
 					
 				?></span></a></li>
-				<li><a href="assign_new_task.php?site=Assign%20new%20task" class="link-dark rounded">Assign new task</a></li>
+				<li><a href="assign_new_task.php?site=Assign%20new%20task" class="link-dark rounded">Assign New Task</a></li>
 				<?php if($_SESSION['role'] == "Head"){?>
-				<li><a href="assign_issue_reports.php?site=Unassigned%20Reports" class="link-dark rounded">Assign issue report</a></li>
+				<li><a href="assign_issue_reports.php?site=Unassigned%20Reports" class="link-dark rounded">Assign Issue Report</a></li>
 				<?php	}
 				?>
-				<li><a href="add_new_equipment.php" class="link-dark rounded">Add new equipment</a></li>
-				<li><a href="assign_issue.php?site=Report%20Issue" class="link-dark rounded">Create issue report</a></li>
+				<li><a href="add_new_equipment.php?site=Add%20New%20Equipment" class="link-dark rounded">Add New Equipment</a></li>
+				<li><a href="assign_issue.php?site=Report%20Issue" class="link-dark rounded">Create Issue Report</a></li>
 				<?php if($_SESSION['role'] == "Head"){?>
-				<li><a href="users.php?page=1&site=Users" class="link-dark rounded">Manage users</a></li>
+				<li><a href="users.php?page=1&site=Users" class="link-dark rounded">Manage Users</a></li>
 				<?php	}
 				?>
 			  </ul>

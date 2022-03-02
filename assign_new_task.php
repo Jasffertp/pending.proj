@@ -1,12 +1,11 @@
+<head>
+	<title>Assign New Task</title>
+
+</head>
 <?php
 	session_start();
 	include 'header.php';
 ?>
-
-<head>
-	<title>Assign new task</title>
-
-</head>
 <?php 
     if(isset($_GET['status']) && $_GET['status'] == 'submitted')
     {
@@ -21,6 +20,8 @@
 	<div class="container-fluid py-4">
         <div class="info">
 					<form action="backend/create_task.p.php" method="post">
+						<h2>Machine Details</h2>
+						<hr class="rounded">
 						<?php
 						
 							if(isset($_GET['asset']) && isset($_GET['machine']) && isset($_GET['e_id']) && isset($_GET['room'])){
@@ -74,8 +75,9 @@
 								<?php
 							}
 						?>
-						
-
+						<br>
+						<h2>Task Details</h2>
+						<hr class="rounded">
 						<div class="form-group">
 							<label for="formGroupExampleInput2">Task</label>
 							<input type="text" class="form-control" name="task" placeholder="Task">

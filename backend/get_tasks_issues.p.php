@@ -7,10 +7,16 @@
 		$min = 0;
 	}
 	
+	if(isset($_GET['i_status'])){
+		$s = $_GET['i_status'];
+	}else{
+		$s = 0;
+	}
+	
 	if ($_SESSION['role'] == "Head" || $_SESSION['role'] == "Admin"){
 		$sql = "SELECT issue.issue_id, issue.machine_id, issue.issue, issue.issue_status, issue.assigned_to, issue.date_created, issue.date_due, issue.date_issue_resolved, equipment.equipment_id, equipment.equipment_name, equipment.location_id, location.location_id, location.floor,location.room_number, users.users_id, users.username 
 		FROM `issue`, `users`,`location`,`equipment` 
-		WHERE users.users_id = ".$_SESSION['userId']." AND issue.assigned_to = ".$_SESSION['userId']." AND equipment.equipment_id = issue.machine_id AND equipment.location_id = location.location_id AND (day(issue.date_created) = day(now()) || issue.issue_status = 0)
+		WHERE users.users_id = ".$_SESSION['userId']." AND issue.assigned_to = ".$_SESSION['userId']." AND equipment.equipment_id = issue.machine_id AND equipment.location_id = location.location_id AND (day(issue.date_created) = day(now()) || issue.issue_status = ".$s.")
 		ORDER BY issue.date_created DESC 
 		LIMIT ".$min.", 10";
 	}else if($_SESSION['role'] == "Technician"){
@@ -32,16 +38,22 @@
 			while($row = mysqli_fetch_array($result)){
 				if ($_SESSION['role'] == "Head" || $_SESSION['role'] == "Admin"){
 				?>
-					<tr role="button" data-href="tasks_preview.p.php?issue=<?php echo $row['issue'];?>&<?php echo $row['equipment_name'];?>">
+					<tr role="button" data-href="issue_report.php?i_id=<?php echo $row['issue_id'];?>&<?php echo $row['equipment_name'];?>">
 						<td><?php echo $row['issue'];?></td>
 						<td><?php echo $row['equipment_name'];?></td>
 						<td><?php echo $row['floor'];?></td>
 						<td><?php echo $row['room_number'];?></td>
 						<td><?php echo $row['date_created'];?></td>
 						<td><?php echo $row['date_due'];?></td>
-						<td><?php echo $row['date_submitted'];?></td>
 						<td><?php 
-							if($row['issue_status']){
+							if(!is_null($row['date_issue_resolved'])){
+								echo $row['date_issue_resolved'];
+							}else{
+								echo '--';
+							}
+						?></td>
+						<td><?php 
+							if($row['issue_status'] == 0){
 								echo 'Unresolved';
 							}else{
 								echo 'Resolved';
@@ -51,7 +63,7 @@
 				<?php
 				}else if($_SESSION['role'] == "Technician"){
 				?>
-					<tr role="button" data-href="backend/tasks_preview.p.php?task=<?php echo $row['report_id'];?>&e=<?php echo $row['machine_id'];?>">
+					<tr role="button" data-href="createStatusReport.php?task=<?php echo $row['report_id'];?>&e=<?php echo $row['machine_id'];?>">
 						<td><?php echo $row['task'];?></td>
 						<td><?php echo $row['equipment_name'];?></td>
 						<td><?php echo $row['floor'];?></td>

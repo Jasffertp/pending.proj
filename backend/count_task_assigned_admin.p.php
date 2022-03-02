@@ -1,7 +1,7 @@
 <?php
 	include 'dbh.p.php';
 	
-	$sql = "SELECT COUNT(assigned_to) as total FROM `issue` WHERE assigned_to = ".$_SESSION['userId']."";
+	$sql = "SELECT COUNT(assigned_to) as total FROM `issue` WHERE assigned_to = ".$_SESSION['userId']." AND issue_status = 0";
 	$stmt = mysqli_stmt_init($conn);
 	
 	if(!mysqli_stmt_prepare($stmt, $sql)){

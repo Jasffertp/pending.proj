@@ -34,6 +34,7 @@
 
 	<a href="assign_issue.php" type="button" class="btn btn-danger btn-lg my-2">Report an equipment issue</a>
 	
+	<a href="add_aircon_reading.php" type="button" class="btn btn-success btn-lg my-2">Add aircon reading</a>
 		  
 		  <?php
 				if($_SESSION['role'] == "Admin" || $_SESSION['role'] == "Head"){

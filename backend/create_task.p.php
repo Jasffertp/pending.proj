@@ -24,9 +24,8 @@ if(isset($_POST['submit']))
 	}else if($typeOfMachine == 'HVAC'){
 		$e_id = $_POST['airconForm'];
 	}
+		
 	
-	echo $e_id, $task, $taskDesc, $dueDate, $date_created, $unresolved, $assignedTo, $_SESSION['userId'];
-
 	$report_id = "SELECT report_id as last FROM reports ORDER BY report_id DESC LIMIT 1";
 
 	
@@ -84,5 +83,8 @@ if(isset($_POST['submit']))
 		}
 	}
 	
+}else{
+	header("Location:../assign_new_task.php?site=Assign%20new%20task");
+	exit();
 }
 ?> 

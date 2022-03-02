@@ -1,7 +1,7 @@
 <?php
 	include 'dbh.p.php';
 	
-	$sql = "SELECT count(*) as total FROM `issue` WHERE assigned_to is null or date_created = now()";
+	$sql = "SELECT count(*) as total FROM `issue` WHERE assigned_to is null or day(date_created) = day(now())";
 	$stmt = mysqli_stmt_init($conn);
 	
 	if(!mysqli_stmt_prepare($stmt, $sql)){

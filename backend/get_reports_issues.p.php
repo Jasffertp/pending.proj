@@ -16,9 +16,9 @@
 	}else if($_GET['site'] == "Issue Reports"){
 		$sql = "SELECT issue.issue_id, issue.machine_id, issue.issue, issue.issue_status, issue.assigned_to, issue.date_created, issue.date_due, issue.date_issue_resolved, equipment.equipment_id, equipment.equipment_name, equipment.location_id, location.location_id, location.floor,location.room_number, users.users_id, users.username 
 		FROM `issue`, `users`,`location`,`equipment` 
-		WHERE users.users_id = 6 AND issue.submitted_by = 6 AND equipment.equipment_id = issue.machine_id AND equipment.location_id = location.location_id
+		WHERE users.users_id = ".$_SESSION['userId']." AND issue.submitted_by = ".$_SESSION['userId']." AND equipment.equipment_id = issue.machine_id AND equipment.location_id = location.location_id
 		ORDER BY issue.date_created DESC 
-		LIMIT ".$min.", 10";
+		LIMIT ".$min.", 10 ";
 	}
 	
 	$stmt = mysqli_stmt_init($conn);
@@ -32,7 +32,7 @@
 			if($result->num_rows > 0){
 				while($row = mysqli_fetch_array($result)){
 					?>
-					<tr role="button" data-href="index.php?page=1&site=Tasks">
+					<tr role="button" data-href="viewPastReports.php?r=<?php echo $row['report_id'];?>&e=<?php echo $row['machine_id'];?>">
 						<td><?php echo $row['task'];?></td>
 						<td><?php echo $row['equipment_name'];?></td>
 						<td><?php echo $row['floor'];?></td>
@@ -41,7 +41,7 @@
 						<td><?php echo $row['task_due'];?></td>
 						<td><?php echo $row['date_submitted'];?></td>
 						<td><?php echo 'Resolved';?></td>
-						<td><i class="fas fa-file-edit"></i> <i class="fas fa-trash-alt"></i></td>
+						<td><a type="button" class="btn btn-danger btn-sm " data-bs-target="#<?php echo $row['report_id'];?>" data-toggle="modal"><i class="fas fa-trash-alt h6" style="font-color:red;"></i></a></td>
 					</tr>
 				<?php
 				}
@@ -70,12 +70,42 @@
 							echo 'unresolved';
 						}
 							?></td>
-						<td><a href="assign_issue.php?edit=true&id=<?php echo $row['issue_id'];?>" type="button" class="btn btn-primary btn-sm"><i class="fas fa-edit h6 "></i></a> 
+						<td>
+						<?php 
 						
-						<a type="button" class="btn btn-danger btn-sm " data-target="#<?php echo $row['issue_id'];?>" data-toggle="modal"><i class="fas fa-trash-alt h6" style="font-color:red;"></i></a></td>
+						if($row['issue_status'] || !is_null($row['assigned_to'])){
+							echo 'Issue has been assigned';
+						}else{
+							?>
+							<!--<a href="assign_issue.php?edit=true&id=<?php echo $row['issue_id'];?>" type="button" class="btn btn-primary btn-sm"><i class="fas fa-edit h6 "></i></a> -->
+							<a type="button" class="btn btn-danger btn-sm " data-target="#<?php echo $row['issue_id'];?>" data-toggle="modal"><i class="fas fa-trash-alt h6" style="font-color:red;"></i></a><?php
+						}
+							?> 
+						
+						</td>
 					</tr>
 					
-					<div class="modal fade" id="<?php echo $row['issue_id'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal fade" id="<?php echo $row['report_id'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  <div class="modal-dialog" role="document">
+					<div class="modal-content">
+					  <div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Deleting report</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						  <span aria-hidden="true">&times;</span>
+						</button>
+					  </div>
+					  <div class="modal-body">
+						Are you sure you want to delete the report you submitted? 
+					  </div>
+					  <div class="modal-footer">
+						<button type="button" class="btn btn-danger " data-dismiss="modal"><i class="fas fa-times"></i> Cancel</button>
+						<a href ="backend/delete_report.p.php?id=<?php echo $row['report_id'];?>" role="button" class="btn btn-primary"><i class="fas fa-check"></i> Delete Issue</a></td>
+					  </div>
+					</div>
+				  </div>
+				</div>
+
+				<div class="modal fade" id="<?php echo $row['issue_id'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 				  <div class="modal-dialog" role="document">
 					<div class="modal-content">
 					  <div class="modal-header">

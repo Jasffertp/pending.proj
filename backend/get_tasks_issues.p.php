@@ -16,13 +16,13 @@
 	if ($_SESSION['role'] == "Head" || $_SESSION['role'] == "Admin"){
 		$sql = "SELECT issue.issue_id, issue.machine_id, issue.issue, issue.issue_status, issue.assigned_to, issue.date_created, issue.date_due, issue.date_issue_resolved, equipment.equipment_id, equipment.equipment_name, equipment.location_id, location.location_id, location.floor,location.room_number, users.users_id, users.username 
 		FROM `issue`, `users`,`location`,`equipment` 
-		WHERE users.users_id = ".$_SESSION['userId']." AND issue.assigned_to = ".$_SESSION['userId']." AND equipment.equipment_id = issue.machine_id AND equipment.location_id = location.location_id AND (day(issue.date_created) = day(now()) || issue.issue_status = ".$s.")
+		WHERE users.users_id = ".$_SESSION['userId']." AND issue.assigned_to = ".$_SESSION['userId']." AND equipment.equipment_id = issue.machine_id AND equipment.location_id = location.location_id AND issue.issue_status = ".$s."
 		ORDER BY issue.date_created DESC 
 		LIMIT ".$min.", 10";
 	}else if($_SESSION['role'] == "Technician"){
 		$sql = "SELECT report_id, reports.machine_id, reports.task, reports.date_created, reports.task_due, reports.date_submitted, reports.assigned_user, reports.report_status, equipment.equipment_id, equipment.equipment_name, equipment.location_id, location.location_id, location.floor,location.room_number, users.users_id, users.username 
 		FROM `reports`, `users`,`location`,`equipment` 
-		WHERE users.users_id = ".$_SESSION['userId']." AND reports.assigned_user = ".$_SESSION['userId']." AND equipment.equipment_id = reports.machine_id AND equipment.location_id = location.location_id AND (day(reports.date_created) = day(now()) || reports.report_status = 'unresolved')
+		WHERE users.users_id = ".$_SESSION['userId']." AND reports.assigned_user = ".$_SESSION['userId']." AND equipment.equipment_id = reports.machine_id AND equipment.location_id = location.location_id AND  reports.report_status = 'unresolved'
 		ORDER BY reports.date_created DESC 
 		LIMIT ".$min.", 10";
 	}

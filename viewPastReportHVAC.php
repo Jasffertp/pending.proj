@@ -1,12 +1,8 @@
 <?php
-
-session_start();
 include 'backend/dbh.p.php';
-include 'header.php';
-include 'backend/get_status_report_hvac.p.php';
 
 //getting specific reports record
-$sql_report = "SELECT * FROM `reports` WHERE report_id = ".$_GET['r_id']."";
+$sql_report = "SELECT * FROM `reports` WHERE report_id = ".$_GET['r']."";
 $stmt = mysqli_stmt_init($conn);
 
 if(!mysqli_stmt_prepare($stmt, $sql_report)){
@@ -17,7 +13,7 @@ if(!mysqli_stmt_prepare($stmt, $sql_report)){
 }
 
 //getting specific equipment record
-$sql_equipment = "SELECT * FROM `equipment` WHERE equipment_id = ".$_GET['e_id']."";
+$sql_equipment = "SELECT * FROM `equipment` WHERE equipment_id = ".$_GET['e']."";
 $stmt = mysqli_stmt_init($conn);
 
 if(!mysqli_stmt_prepare($stmt, $sql_equipment)){
@@ -108,10 +104,4 @@ $for_repair = $row_hvac['for_repair'];
             <label for="comments">Other remarks</label>
             <textarea class="form-control" id="comments" name="other_remarks" rows="3" placeholder="<?php echo $row_hvac['other_remarks'] ?>" disabled></textarea>
         </div>
-
-	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-    	<strong>Yes!</strong> Report submitted succesfully 
-    	<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-	</div>
-<?php include 'backend/equipment_monitoring_hvac.p.php'; ?>
 </div>

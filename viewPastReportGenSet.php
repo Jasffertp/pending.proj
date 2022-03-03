@@ -1,12 +1,8 @@
 <?php
-
-session_start();
 include 'backend/dbh.p.php';
-include 'header.php';
-include 'backend/get_status_report_genset.p.php';
 
 //getting specific reports record
-$sql_report = "SELECT * FROM `reports` WHERE report_id = ".$_GET['r_id']."";
+$sql_report = "SELECT * FROM `reports` WHERE report_id = ".$_GET['r']."";
 $stmt = mysqli_stmt_init($conn);
 
 if(!mysqli_stmt_prepare($stmt, $sql_report)){
@@ -17,7 +13,7 @@ if(!mysqli_stmt_prepare($stmt, $sql_report)){
 }
 
 //getting specific equipment record
-$sql_equipment = "SELECT * FROM `equipment` WHERE equipment_id = ".$_GET['e_id']."";
+$sql_equipment = "SELECT * FROM `equipment` WHERE equipment_id = ".$_GET['e']."";
 $stmt = mysqli_stmt_init($conn);
 
 if(!mysqli_stmt_prepare($stmt, $sql_equipment)){
@@ -25,16 +21,6 @@ if(!mysqli_stmt_prepare($stmt, $sql_equipment)){
 }else{
 	$result_equipment = mysqli_query($conn, $sql_equipment);
 	$row_equipment = mysqli_fetch_assoc($result_equipment);
-}
-
-//getting the location of specific equipment
-$sql_location = "SELECT * FROM `location` WHERE location_id = ".$row_equipment['location_id']."";
-	
-if(!mysqli_stmt_prepare($stmt, $sql_location)){
-	echo 'error connecting to database location';
-}else{	
-	$result_loc = mysqli_query($conn, $sql_location);
-	$row_loc = mysqli_fetch_assoc($result_loc);
 }
 
 //getting the readings of specific record
@@ -188,10 +174,5 @@ $gas_leak = $row_genset['gas_leak'];
             <label for="comments">Other remarks</label>
             <textarea class="form-control" id="comments" name="other_remarks" rows="3" placeholder="<?php echo $row_genset['other_remarks'] ?>" disabled></textarea>
         </div>
-
-	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-    	<strong>Yes!</strong> Report submitted succesfully 
-    	<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-	</div>
 </div>
 </div>
